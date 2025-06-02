@@ -3,8 +3,7 @@ from .forms import InputForm
 
 def calculate_view(request):
     form = InputForm(request.POST or None)
-    error ="You send invalided values"
-    result = error 
+    error = result = None 
 
     if request.method == 'POST' and form.is_valid():
         a = form.cleaned_data['a']
@@ -13,11 +12,11 @@ def calculate_view(request):
 
 
         if a < 1:
-            error = "A value is too small."
+            error = "'A' value is too small."
         elif b == 0:
-            error ="B value will not affect the result"
+            error ="'B' value will not affect the result"
         elif c < 0:
-            error = "C must be bigger or equal to zero"
+            error = "'C' must be bigger or equal to zero"
         else:
             calc = None
             c_cube = c ** 3
